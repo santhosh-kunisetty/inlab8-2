@@ -143,14 +143,16 @@ int get_offset(int virtual) {
     return virtual & mask;
 }
 void initialize_page_table(int n) {
-    for (int i = 0; i < PAGE_ENTRIES; i++) {
+    int i;
+    for (i = 0; i < PAGE_ENTRIES; i++) {
         page_table[i] = n;
     }
 }
 
 
 void initialize_tlb(int n) {
-    for (int i = 0; i < TLB_ENTRIES; i++) {
+    int i;
+    for (i = 0; i < TLB_ENTRIES; i++) {
         tlb[i][0] = -1;
         tlb[i][1] = -1;
     }
@@ -165,7 +167,8 @@ int consult_page_table(int page_number) {
     return page_table[page_number];
 }
 int consult_tlb(int page_number) {
-    for (int i = 0; i < TLB_ENTRIES; i++) {
+    int i;
+    for (i = 0; i < TLB_ENTRIES; i++) {
         if (tlb[i][0] == page_number) {
             tlb_counter++;
 
